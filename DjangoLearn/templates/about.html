@@ -1,14 +1,7 @@
-{% load static %}
+{% extends "layouts/layout.html" %} 
 
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="{% static 'style.css' %}">
-    <title>About Page</title>
-  </head>
-  <body>
-    <h1>About page in Django app</h1>
-    <a href="/">Go to home page</a>
-  </body>
-</html>
+{% block title %}About page{% endblock %}
+
+{% block block_content %}
+<h1>About page in Django app</h1>
+{% endblock %}
