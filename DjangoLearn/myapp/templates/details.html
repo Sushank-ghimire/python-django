@@ -1,0 +1,18 @@
+{% extends "layouts/layout.html" %}
+
+{% block title %}
+{% if data %}
+{{ data.name }}
+{% endif %}
+{% endblock %}
+
+
+{% block block_content %}
+<div class="border border-black border-spacing-2 p-3 bg-rose-100 rounded text-black mt-4 flex flex-col gap-4">
+    <div>Name : {{data.name}}</div>
+    <img class="min-h-32 rounded-lg mx-auto w-32" src="{{ data.image.url }}" alt="User Profile">
+    <div>Email : {{ data.email }}</div>
+    <div>Description : {{ data.description }}</div>
+    <button class="w-full text-center bg-orange-400 hover:bg-orange-500 transition-all duration-150 rounded-lg py-3 px-2 hover:text-white">Book your class</button>
+  </div>
+{% endblock %}

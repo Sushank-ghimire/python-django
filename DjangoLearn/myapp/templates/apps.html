@@ -1,0 +1,24 @@
+{% extends "layouts/layout.html" %} 
+
+{% block title %} My all data app {%endblock %}
+
+{% block block_content %}
+<h1>Data From The Database</h1>
+<section class="grid md:grid-cols-2 sm:grid-cols-1 lg:grid-cols-3 gap-4 w-full p-6">
+  {% for data in app_data %}
+  <div class="border border-black border-spacing-2 p-3 bg-rose-100 rounded text-black mt-4 flex flex-col gap-4">
+    <div>Name : {{data.name}}</div>
+    <img class="min-h-32 rounded-lg mx-auto w-32" src="{{ data.image.url }}" alt="User Profile">
+    <div>Email : {{ data.email }}</div>
+    <div>Date : {{ data.date }}</div>
+
+    {% comment %} <a href="/myapp/data/{{ data.id }}">
+        <button class="w-full text-center bg-orange-400 hover:bg-orange-500 transition-all duration-150 rounded-lg py-3 px-2 hover:text-white">Join a class for {{data.type}}</button>
+    </a> {% endcomment %}
+    <a href="{% url 'course_detail' data.id %}">
+        <button class="w-full text-center bg-orange-400 hover:bg-orange-500 transition-all duration-150 rounded-lg py-3 px-2 hover:text-white">Join a class for {{data.type}}</button>
+    </a>
+  </div>
+  {% endfor %}
+</section>
+{% endblock %}

@@ -9,12 +9,13 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <title>{% block title %} My Custom Layout {% endblock %}</title>
   </head>
-  <body>
+  <body class="bg-indigo-500">
     <nav class="font-bold text-center text-white">
       <a href="/">Home</a>
       <a href="/myapp">My app</a>
       <a href="/about">About</a>
       <a href="/contact">Contact</a>
+      <a href="/myapp/data">Data</a>
     </nav>
     <section>{% block block_content %} {% endblock %}</section>
   </body>
