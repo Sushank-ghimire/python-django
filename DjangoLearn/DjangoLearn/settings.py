@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'myapp',
     'tailwind',
     'theme',
+    'todoapp',
 ]
 
 TAILWIND_APP_NAME = 'theme'

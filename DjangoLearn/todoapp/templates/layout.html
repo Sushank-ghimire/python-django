@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>{% block title %}Document{% endblock title %}</title>
+  </head>
+  <body class="h-screen w-screen flex flex-col bg-blue-400 overflow-x-hidden">
+    <nav class="w-full flex justify-center gap-4 items-center">
+      <a class="underline underline-offset-2 hover:font-bold" href="/">Home</a>
+      <a class="underline underline-offset-2 hover:font-bold" href="/myapp"
+        >Myapp</a
+      >
+    </nav>
+    <div class="m-4">{% block data %} Data Add Section {% endblock data %}</div>
+    <div class="mt-8">{% block content %}{% endblock content %}</div>
+  </body>
+</html>

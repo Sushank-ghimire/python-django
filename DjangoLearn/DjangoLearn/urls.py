@@ -26,4 +26,5 @@ urlpatterns = [
     path('', views.home, name="home"),
     path('contact/', views.contact, name="contact"),
     path('myapp/', include('myapp.urls')),
+    path('todos/', include('todoapp.urls'))
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

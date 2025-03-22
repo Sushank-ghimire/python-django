@@ -1,0 +1,67 @@
+{% extends "layout.html" %}
+
+{% block title %}Your Todos Section{% endblock %}
+
+{% block data %}
+<div class="max-w-lg mx-auto p-6 bg-white rounded-lg shadow-lg">
+    <h2 class="text-2xl font-semibold text-center text-gray-700 mb-6">Create Task</h2>
+    <form action="{% url 'add_todo' %}" method="POST" class="space-y-4">
+        {% csrf_token %}
+        
+        <div>
+            <label for="title" class="block text-sm font-medium text-gray-700">Task Title</label>
+            <input type="text" id="title" name="title" class="w-full mt-2 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400" placeholder="Enter task title" required>
+        </div>
+
+        <div>
+            <label for="description" class="block text-sm font-medium text-gray-700">Description</label>
+            <textarea id="description" name="description" class="w-full mt-2 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400" rows="4" placeholder="Enter task description" required></textarea>
+        </div>
+
+        <div>
+            <label for="importance" class="block text-sm font-medium text-gray-700">Importance</label>
+            <select id="importance" name="importance" class="w-full mt-2 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400">
+                <option value="Important">Important</option>
+                <option value="Less Important">Less Important</option>
+                <option value="No Hurry">No Hurry</option>
+            </select>
+        </div>
+
+        <div>
+            <label for="done_upto" class="block text-sm font-medium text-gray-700">Done By</label>
+            <input type="date" id="done_upto" name="done_upto" class="w-full mt-2 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400" required>
+        </div>
+
+        <div class="text-center mt-6">
+            <button type="submit" class="px-6 py-3 bg-blue-600 text-white rounded-lg font-semibold hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400">Submit</button>
+        </div>
+    </form>
+</div>
+{% endblock data %}
+
+
+{% block content %}
+<div class="max-w-4xl mx-auto p-6 bg-white rounded-lg shadow-lg mb-8">
+    <h2 class="text-2xl font-semibold text-center text-gray-700 mb-6">All Tasks</h2>
+    <table class="min-w-full table-auto">
+        <thead class="bg-gray-100">
+            <tr>
+                <th class="px-4 py-2">Title</th>
+                <th class="px-4 py-2">Description</th>
+                <th class="px-4 py-2">Importance</th>
+                <th class="px-4 py-2">Done By</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for todo in todos %}
+                <tr class="border-b">
+                    <td class="px-4 py-2">{{ todo.title }}</td>
+                    <td class="px-4 py-2">{{ todo.description }}</td>
+                    <td class="px-4 py-2">{{ todo.get_importance_display }}</td>
+                    <td class="px-4 py-2">{{ todo.done_upto }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}
