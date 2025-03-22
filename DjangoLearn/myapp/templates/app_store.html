@@ -1,0 +1,11 @@
+{% extends "layouts/layout.html" %}
+
+{% block title %}App Store{% endblock %}
+
+{% block block_content %}
+<form method="POST" class="text-black">
+    {% csrf_token %}
+    {{ form }}
+    <button type="submit">Submit</button>
+</form>
+{% endblock %}
